@@ -1,0 +1,259 @@
+<!--Este seria el esquelto que hemos realizado, futuramente se iran incorporando acciones para los botones y demas objetos de la interfaz -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donostiako Zinemaldia — Programación y entradas</title>
+  <meta name="description" content="Consulta la programación del Festival de San Sebastián por día, sala y sección, y compra tus entradas.">
+  <meta property="og:title" content="Donostiako Zinemaldia — Programación y entradas">
+  <meta property="og:description" content="Horarios, salas y venta de entradas del Festival de Cine de San Sebastián.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Donostiako Zinemaldia — Programación y entradas">
+  <meta name="twitter:description" content="Horarios, salas y venta de entradas del Festival de Cine de San Sebastián.">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- Atajo de accesibilidad -->
+  <a href="#contenido-principal">Saltar al contenido principal</a>
+
+  <!-- Cabecera principal -->
+  <header>
+    <div>
+      <a href="#" aria-label="Donostiako Zinemaldia, página de inicio">
+        <span aria-hidden="true">Z</span>
+        <span>Zinemaldia <span>74 · San Sebastián</span></span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="#programacion">Programación</a></li>
+          <li><a href="#salas">Salas y accesos</a></li>
+          <li><a href="#entradas">Entradas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <label for="idioma-select">Idioma</label>
+        <select id="idioma-select">
+          <option value="eu">EU</option>
+          <option value="es" selected>ES</option>
+          <option value="en">English</option>
+          <option value="fr">FR</option>
+        </select>
+
+        <button type="button" title="Alto contraste">
+          <span aria-hidden="true">◐</span>
+          <span>Activar alto contraste</span>
+        </button>
+
+        <a href="#entradas">Comprar entradas</a>
+
+        <button type="button" aria-expanded="false">
+          <span aria-hidden="true">☰</span>
+          <span>Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main id="contenido-principal">
+
+    <!-- Sección 1: Presentación -->
+    <section>
+      <div>
+        <div>
+          <p>18 — 26 septiembre 2026</p>
+          <h1>Nueve días de cine frente a la Concha.</h1>
+          <p>Más de 200 películas, 5 salas y una sola pregunta: ¿qué quieres ver hoy? Filtra por día, sala o sección y reserva en dos clics.</p>
+
+          <div>
+            <a href="#programacion">Ver programación de hoy</a>
+            <a href="#entradas">Cómo comprar entradas</a>
+          </div>
+        </div>
+
+        <aside aria-label="Datos clave del festival">
+          <dl>
+            <div>
+              <dt>Películas</dt>
+              <dd>214</dd>
+            </div>
+            <div>
+              <dt>Sesiones</dt>
+              <dd>580</dd>
+            </div>
+            <div>
+              <dt>Salas</dt>
+              <dd>5</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Sección 2: Programación -->
+    <section id="programacion">
+      <h2>Programación</h2>
+      <p>Elige un día y afina con los filtros. Los resultados se actualizan al instante.</p>
+
+        <div role="group" aria-label="Días del festival">
+          <button type="button" aria-pressed="true">Todos</button>
+          <button type="button" aria-pressed="false">Vie 18</button>
+          <button type="button" aria-pressed="false">Sáb 19</button>
+          <button type="button" aria-pressed="false">Dom 20</button>
+          <button type="button" aria-pressed="false">Lun 21</button>
+          <button type="button" aria-pressed="false">Mar 22</button>
+        </div>
+
+      <form role="search" aria-label="Filtrar programación">
+        <div>
+          <label for="buscar-input">Buscar</label>
+          <input id="buscar-input" type="search" placeholder="Título o director/a">
+        </div>
+        <div>
+          <label for="sala-select">Sala</label>
+          <select id="sala-select">
+            <option value="" selected>Todas</option>
+            <option>Kursaal 1</option>
+            <option>Kursaal 2</option>
+            <option>Victoria Eugenia</option>
+            <option>Principal</option>
+            <option>Tabakalera</option>
+          </select>
+        </div>
+        <div>
+          <label for="seccion-select">Sección</label>
+          <select id="seccion-select">
+            <option value="" selected>Todas</option>
+            <option>Sección Oficial</option>
+            <option>Nuevas direcciones</option>
+            <option>Horizontes Latinos</option>
+            <option>Perlak</option>
+            <option>Zabaltegi</option>
+          </select>
+        </div>
+        <div>
+          <label for="genero-select">Género</label>
+          <select id="genero-select">
+            <option value="" selected>Todas</option>
+            <option>Drama</option>
+            <option>Documental</option>
+            <option>Comedia</option>
+            <option>Thriller</option>
+            <option>Animación</option>
+          </select>
+        </div>
+      </form>
+
+      <div aria-live="polite">
+        <p>10 sesiones encontradas</p>
+      </div>
+
+      <ul>
+        <li>
+          <article>
+            <img src="poster-marea-lenta.jpg" alt="Cartel de la película La marea lenta">
+            <div>
+              <p><time datetime="2026-09-18T16:00">Vie 18 · 16:00</time> — Kursaal 1</p>
+              <h3>La marea lenta</h3>
+              <p>Ane Etxeberria · España · 118 min · Drama · VOSE</p>
+              <div>
+                <span>Últimas entradas</span>
+                <button aria-label="Comprar entrada para La marea lenta, Vie 18 a las 16:00">Comprar</button>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article>
+            <img src="poster-norte-sin-nombre.jpg" alt="Cartel de la película Norte sin nombre">
+            <div>
+              <p><time datetime="2026-09-18T19:00">Vie 18 · 19:00</time> — Victoria Eugenia</p>
+              <h3>Norte sin nombre</h3>
+              <p>Lucía Paredes · Argentina · 102 min · Thriller · VOSE</p>
+              <div>
+                <span>Entradas disponibles</span>
+                <button aria-label="Comprar entrada para Norte sin nombre, Vie 18 a las 19:00">Comprar</button>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Sección 3: Guía de Compra -->
+    <section id="entradas">
+      <div>
+        <h2>Entradas en tres pasos</h2>
+        <ol>
+          <li>
+            <span>1</span>
+            <h3>Elige la sesión</h3>
+            <p>Filtra la programación y pulsa «Comprar».</p>
+          </li>
+          <li>
+            <span>2</span>
+            <h3>Paga online</h3>
+            <p>Tarjeta o Bizum. Máximo 4 entradas por sesión.</p>
+          </li>
+          <li>
+            <span>3</span>
+            <h3>Entra con tu móvil</h3>
+            <p>Muestra el código QR en la puerta de la sala.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Sección 4: Salas -->
+    <section id="salas">
+      <h2>Salas y accesos</h2>
+      <p>Todo lo que necesitas para llegar a tiempo y sin sorpresas.</p>
+      <div>
+        <article>
+          <h3>Kursaal</h3>
+          <address>Av. de Zurriola 1</address>
+          <dl>
+            <div>
+              <dt>Aforo:</dt>
+              <dd>Auditorio 1.806 · Sala 2: 624</dd>
+            </div>
+            <div>
+              <dt>Cómo llegar:</dt>
+              <dd>Bus 13, 27 · Estación Euskotren Kursaal</dd>
+            </div>
+            <div>
+              <dt>Accesibilidad:</dt>
+              <dd>Ascensor, bucle magnético, 8 plazas PMR</dd>
+            </div>
+          </dl>
+          <a href="#">Ver en el mapa</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de página (Requisito obligatorio) -->
+  <footer id="contacto">
+    <div>
+      <p>&copy; 2026 Donostiako Zinemaldia - Festival Internacional de Cine de San Sebastián</p>
+      <nav aria-label="Enlaces legales y contacto">
+        <ul>
+          <li><a href="#">Aviso Legal</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Accesibilidad Web</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
