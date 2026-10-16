@@ -1,0 +1,781 @@
+/* Donostiako Zinemaldia - Grupo 6.css */
+
+:root {
+  --rojo: #8f1d21;          /* Rojo alfombra de festival */
+  --rojo-oscuro: #5e1114;   /* Rojo para cabecera y pie */
+  --dorado: #c9a24b;        /* Dorado para detalles y bordes */
+  --dorado-oscuro: #7a5c1a; /* Dorado legible sobre fondo claro */
+  --hueso: #f4eee2;         /* Blanco hueso: fondo general */
+  --hueso-claro: #fbf8f1;   /* Fondo de las secciones */
+  --tinta: #2b1f1d;         /* Color del texto (casi negro) */
+  --tinta-suave: #5c4a45;   /* Texto secundario */
+  --borde: #e2d6bf;         /* Bordes finos */
+
+  --fuente-titulos: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --fuente-texto: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--hueso);
+  color: var(--tinta);
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  font-variant-numeric: lining-nums; /* Números alineados (sin bailar) */
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  font-variant-numeric: lining-nums;
+  color: var(--rojo);
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--rojo);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--dorado-oscuro);
+}
+
+/* Atajo de accesibilidad: oculto hasta que se navega con Tab */
+.saltar-contenido {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 9999;
+  background-color: var(--rojo-oscuro);
+  color: var(--hueso-claro);
+  padding: 12px 22px;
+  border: 2px solid var(--dorado);
+  border-radius: 6px;
+  font-weight: 700;
+  transition: top 0.3s ease;
+}
+
+.saltar-contenido:focus {
+  top: 15px;
+  color: var(--hueso-claro);
+}
+
+/* Campos de formulario */
+input, select {
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: var(--tinta);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--dorado);
+  border-color: var(--dorado);
+}
+
+/* Contorno visible al navegar con teclado */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+
+/* ----------------------------------------------------------
+   2. CABECERA Y NAVEGACIÓN
+   ---------------------------------------------------------- */
+header {
+  background-color: var(--rojo-oscuro);
+  color: var(--hueso-claro);
+  padding: 16px 30px;
+  border-bottom: 3px solid var(--dorado);
+}
+
+.header-contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Marca del festival */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--hueso-claro);
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.marca:hover {
+  color: var(--hueso-claro);
+}
+
+.marca-icono {
+  color: var(--dorado);
+  font-size: 1.4rem;
+}
+
+/* Menú principal */
+header nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+header nav a {
+  color: var(--hueso);
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+header nav a:hover {
+  color: var(--dorado);
+  border-bottom-color: var(--dorado);
+}
+
+/* Idioma, alto contraste, comprar y menú */
+.header-utilidades {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-utilidades label {
+  font-size: 0.85rem;
+  color: var(--hueso);
+}
+
+/* El botón "Menú" solo se muestra en móvil*/
+.btn-menu {
+  display: none;
+}
+
+
+/* ----------------------------------------------------------
+   3. BOTONES
+   ---------------------------------------------------------- */
+
+/* Botón base: rojo con texto blanco hueso */
+button {
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  font-weight: 700;
+  background-color: var(--rojo);
+  color: var(--hueso-claro);
+  border: 1px solid var(--rojo);
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+  background-color: var(--rojo-oscuro);
+  transform: translateY(-2px);
+}
+
+/* Botón destacado: dorado */
+.btn-gala {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--dorado);
+  color: var(--tinta);
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-gala:hover {
+  background-color: #dbb867;
+  color: var(--tinta);
+  transform: translateY(-2px);
+}
+
+/* Botones de la cabecera sobre fondo rojo oscuro */
+header button {
+  font-size: 1rem;
+  background-color: transparent;
+  border-color: var(--dorado);
+  color: var(--hueso-claro);
+}
+
+header button:hover {
+  background-color: var(--rojo);
+}
+
+
+/* ----------------------------------------------------------
+   4. ESTRUCTURA DE CONTENEDORES Y SECCIONES
+   ---------------------------------------------------------- */
+main {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+section {
+  background-color: var(--hueso-claro);
+  padding: 40px;
+  margin-bottom: 35px;
+  border-radius: 12px;
+  border: 1px solid var(--borde);
+  box-shadow: 0 12px 30px -15px rgba(94, 17, 20, 0.25);
+}
+
+/* Títulos de sección con línea dorada debajo */
+section h2 {
+  font-size: 2rem;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px;
+  height: 3px;
+  background-color: var(--dorado);
+}
+
+p {
+  color: var(--tinta-suave);
+}
+
+
+/* ----------------------------------------------------------
+   5. PORTADA (PRIMERA SECCIÓN)
+   ---------------------------------------------------------- */
+.portada {
+  color: var(--hueso-claro);
+  border: 2px solid var(--dorado);
+  background-image:
+    linear-gradient(to right, rgba(60, 10, 12, 0.95) 50%, rgba(60, 10, 12, 0.6) 100%),
+    url('Descargar.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Texto a la izquierda y datos clave a la derecha */
+.portada-contenedor {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.portada h1 {
+  color: var(--hueso-claro);
+  font-size: 2.8rem;
+  font-style: italic;
+}
+
+.portada p {
+  color: var(--hueso);
+}
+
+.portada .subtitulo-gala {
+  color: var(--dorado);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Botones-enlace de la portada */
+.venta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 230px;
+  padding: 12px 20px;
+  border: 2px solid var(--dorado);
+  border-radius: 6px;
+  background-color: var(--dorado);
+  color: var(--tinta);
+  font-weight: 700;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.venta:hover {
+  background-color: transparent;
+  color: var(--dorado);
+}
+
+.venta-secundaria {
+  background-color: transparent;
+  color: var(--hueso-claro);
+}
+
+.venta-secundaria:hover {
+  background-color: var(--dorado);
+  color: var(--tinta);
+}
+
+/* Datos clave (películas, sesiones, salas) */
+.portada aside {
+  background-color: rgba(251, 248, 241, 0.08);
+  border: 1px solid var(--dorado);
+  border-radius: 8px;
+  padding: 20px 25px;
+}
+
+.portada dl {
+  margin: 0;
+}
+
+.portada dl div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(201, 162, 75, 0.4);
+}
+
+.portada dl div:last-child {
+  border-bottom: none;
+}
+
+.portada dt {
+  color: var(--hueso);
+}
+
+.portada dd {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dorado);
+}
+
+
+/* ----------------------------------------------------------
+   6. PROGRAMACIÓN: DÍAS Y FILTROS
+   ---------------------------------------------------------- */
+.dias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+/* Días sin seleccionar: botón claro con borde */
+.dias button {
+  background-color: transparent;
+  color: var(--rojo);
+  border: 1px solid var(--rojo);
+}
+
+.dias button:hover {
+  background-color: var(--hueso);
+}
+
+/* Día seleccionado */
+.dias button[aria-pressed="true"] {
+  background-color: var(--rojo);
+  color: var(--hueso-claro);
+}
+
+form[role="search"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+  background-color: var(--hueso);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  margin: 0 0 20px;
+}
+
+form[role="search"] > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 180px;
+}
+
+form[role="search"] label {
+  color: var(--rojo);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.resultados {
+  font-weight: 600;
+  color: var(--dorado-oscuro);
+}
+
+
+/* ----------------------------------------------------------
+   7. TARJETAS DE PELÍCULAS Y SALAS (EFECTO CARTEL)
+   ---------------------------------------------------------- */
+
+/* Lista de películas en rejilla*/
+.lista-peliculas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 24px;
+}
+
+.lista-salas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* La tarjeta */
+main article {
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: var(--rojo-oscuro);
+  box-shadow: 0 10px 20px -8px rgba(43, 31, 29, 0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+main article:hover {
+  transform: translateY(-6px);
+  border-color: var(--dorado);
+}
+
+/* La imagen ocupa toda la tarjeta, como fondo */
+main article img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+main article:hover img {
+  transform: scale(1.08);
+}
+
+/* Capa oscura para que el texto se lea sobre la foto */
+main article::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(40, 8, 10, 0.95) 40%, rgba(40, 8, 10, 0.2) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Todo el texto de la tarjeta, por encima de la capa oscura */
+main article > div,
+main article > h3,
+main article > address,
+main article > dl,
+main article > a {
+  position: relative;
+  z-index: 3;
+}
+
+main article h3 {
+  color: var(--hueso-claro);
+  font-size: 1.6rem;
+  margin: 4px 0;
+}
+
+main article p,
+main article dt,
+main article dd,
+main article address {
+  color: var(--hueso);
+}
+
+main article time {
+  color: var(--dorado);
+  font-weight: 700;
+}
+
+main article .detalle-pelicula {
+  color: var(--dorado);
+  font-size: 0.95rem;
+}
+
+/* Fila "estado de entradas + botón Comprar" */
+.compra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.estado {
+  font-size: 0.85rem;
+  color: var(--hueso);
+}
+
+.estado-ultimas {
+  color: var(--dorado);
+  font-weight: 700;
+}
+
+main article button {
+  background-color: var(--dorado);
+  border-color: var(--dorado);
+  color: var(--tinta);
+}
+
+main article button:hover {
+  background-color: #dbb867;
+}
+
+/* Datos de la sala */
+main article address {
+  font-style: normal;
+  margin-bottom: 10px;
+}
+
+main article dl {
+  margin: 0 0 12px;
+}
+
+main article dl div {
+  margin-bottom: 8px;
+}
+
+main article dt {
+  font-weight: 700;
+  color: var(--dorado);
+}
+
+main article dd {
+  margin: 0;
+}
+
+.enlace-mapa {
+  color: var(--dorado);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.enlace-mapa:hover {
+  color: var(--hueso-claro);
+}
+
+
+/* ----------------------------------------------------------
+   8. ENTRADAS: PASOS Y TABLA DE TARIFAS
+   ---------------------------------------------------------- */
+
+/* Quitamos los números automáticos del <ol>
+   porque ya los ponemos a mano en .paso-numero */
+.pasos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 20px;
+}
+
+.pasos li {
+  background-color: var(--hueso);
+  border: 1px solid var(--borde);
+  border-top: 4px solid var(--rojo);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.paso-numero {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--dorado);
+  color: var(--tinta);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.pasos h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.pasos p {
+  margin: 0;
+}
+
+/* Contenedor que permite desplazar la tabla en pantallas pequeñas */
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+.tabla-tarifas {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border: 1px solid var(--borde);
+}
+
+.tabla-tarifas caption {
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--rojo);
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.tabla-tarifas th,
+.tabla-tarifas td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla-tarifas thead {
+  background-color: var(--rojo);
+}
+
+.tabla-tarifas thead th {
+  color: var(--hueso-claro);
+}
+
+.tabla-tarifas tbody th {
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.tabla-tarifas tbody tr:nth-child(even) {
+  background-color: var(--hueso-claro);
+}
+
+.tabla-tarifas tbody tr:hover {
+  background-color: var(--hueso);
+}
+
+/* Precios */
+.tabla-tarifas td {
+  font-weight: 700;
+  color: var(--dorado-oscuro);
+  white-space: nowrap;
+}
+
+
+/* ----------------------------------------------------------
+   9. CLASES DE APOYO, PIE DE PÁGINA Y MÓVIL
+   ---------------------------------------------------------- */
+.texto-dorado {
+  color: var(--dorado);
+}
+
+footer {
+  background-color: var(--rojo-oscuro);
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  border-top: 3px solid var(--dorado);
+}
+
+footer p {
+  color: var(--hueso);
+  margin: 0;
+}
+
+footer nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 0;
+  margin: 15px 0 0;
+}
+
+footer nav a {
+  color: var(--hueso);
+  font-size: 0.9rem;
+}
+
+footer nav a:hover {
+  color: var(--dorado);
+}
+
+/* Pantallas pequeñas (móvil) */
+@media (max-width: 760px) {
+  header {
+    padding: 14px 16px;
+  }
+
+  .btn-menu {
+    display: inline-flex;
+  }
+
+  .portada-contenedor {
+    grid-template-columns: 1fr;
+  }
+
+  .portada h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 24px 18px;
+  }
+
+  .venta {
+    min-width: 0;
+    width: 100%;
+  }
+}
