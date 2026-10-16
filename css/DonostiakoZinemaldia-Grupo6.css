@@ -26,7 +26,7 @@ body {
   font-family: var(--fuente-texto);
   font-size: 1.05rem;
   line-height: 1.65;
-  font-variant-numeric: lining-nums; /* Números alineados (sin bailar) */
+  font-variant-numeric: lining-nums; /* Números alineados */
 }
 
 h1, h2, h3 {
